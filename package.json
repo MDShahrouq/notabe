@@ -1,0 +1,22 @@
+{
+  "name": "notable",
+  "version": "1.0.0",
+  "description": "Note Taking App Backend API ",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "Note"
+  ],
+  "author": "MD SHAHROUQ",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.0"
+  }
+}
