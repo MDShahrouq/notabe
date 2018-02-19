@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Github</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style type="text/css">
+  th{
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<br>
+  <div style="display: block;margin-left: 20px;">
+  <label>Enter the Github url</label>
+  <input type="text" name="submit" value="">
+  <button id="submit" class="btn btn-success"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANrSURBVGhD7dlJyI1RHMfxa4woNqaNJBaUWUkoQ7JBsWCDDRlXeheGiBAyZKFEVsaQscxsTCGKZEzCzrCRDJl9f3pPPZ3+597nXO/7PLe351efej3O+T/n3vvcc87z3FKRIkWKNKlMwknswjz0RFbpjQXYjVPQWKpKS7zGH89ljEdjZTKuwj/vK7RAdCbAL5Z0BB3QUOmE07DO5VT1Bq6DVSzpKXQJuHTESMzHcmyELkvZhJVYiLHoDJchsD59n8YUnYOwivneYRXu4Hf9sbQeYxs+JI6VcxjRqfQx50Fjis4+WMXytBfRWQ2rWJ6q+o6Mg1UsT1MQHc3ZT2AVzIMmhNaITndoRrKK5kEz4lREpQ3uwiqYJ30qUduk9bAK1YJzSBWtuJ9gFakVQ1Exm2F1riXHUDat8B5W51ryBfoeBzMaVsdaNAbBaMdqdfJ9x0VoUliCrTiEt7DaW97gAHQpq4ZqXYJqW+19axGMCludktRGa4wVLaLaxmv7fgXPocvgB15AN2UbMAzNYUW10+y8jyMY684saRmyygpYY3C0zgXzAFYn2YOsU24HrnuZYEIvRJdHV2SdbvgKa0y6VIPRXZ7V6QRCqcN5tP/3r7ioj/qqRih6imON6T6CCd0VLoWVLvgJtVmsA5HRC1Bf1UjewycTmknPIpgtsDrNhhU9a3JtjupAZNTH9Z+oA0bmwLVJ0r1+MNomW5305MPKNLg2qTdzieiycv1Vy8oiuDZJZbf0epxjfbm0WFnReuDa7NCByKiP669aVrQmuTaOxljxmdp++B21ilvRoqZp8BeG60BkRkB9HyG0QF6DPx4tyhXTDyqe7KgvY2j61RRZzYtwUV9NGlZ6wH9WprFojKmyE8nOosUp61gLosaWOprfn8EvMh1ZRTOlf349om2HqPSC//BBO1M9123MNIPWLf/y1lg0pqrSFy+RLCgXkOp2MzKjcBP++fSTgsbyX9EX8Qz84nILWtH7QO9kbLTtHwjtqu/BOofOHZoMoqNBzkK5R/8fcQP6guonBN0saSGdW09/65h2D5rib+MzrFqic81ENW9QxbSFBvUQ1skbgmrrZz6dK5P0xxpcxzdYg0pDfVVDtQYg1+iJxiDMgH6V2g79KKPdtO7DRX/rmP5PbdR2MMo+DSlSpEiRpphS6S8gsYjoA68uMwAAAABJRU5ErkJggg==" />SUBMIT</button>
+</div>
+<h1></h1>
+<table class="table table-bordered">
+  <thead>
+    <th>Name</th>
+    <th>Url</th>
+    <th>Created</th>
+    <th>Company</th>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td id="name"></td>
+      <td id="url"></td>
+      <td id="created"></td>
+      <td id="cmpy"></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+$('#submit').click( function(){
+
+              var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url":$('input:text').val(),
+              "method": "GET",
+              "headers": {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              "data": {}
+            }
+
+          $.ajax(settings).done(function (response) {
+            //console.log(response.name);
+            //var obj = response
+            //$("input:text").val("https://api.github.com/users/mdshahrouq");
+
+              //var data = JSON.parse(response);
+              console.log(response);
+            $('#name').html(response.name);
+            $('#url').html(response.url);
+            $('#created').html(response.created_at);
+            $('#cmpy').html(response.company);
+            
+
+            });
+
+});
+ /*  for (var key in obj) {
+  if (obj.hasOwnProperty(key) && obj.hasOwnProperty()) {
+    var val = obj[key];
+    console.log(val+":"+obj);
+  }
+  } */
+  
+  // iterate through key-value gracefully
+//const obj = { a: 5, b: 7, c: 9 };
+// for (const [key, value] of Object.entries(obj)) {
+//  console.log(`${key}:${value}`); // "a 5", "b 7", "c 9"
+//  document.write(`${key}:${value}\n\t`);
+//  //$('#result').html(`${key}`); 
+//   }
+  
+  // var countt = Object.keys().length
+  // console.log(countt);
+  // var arr = Object.values(obj);
+  // if(arr === undefined || arr === null ){
+  // arr = 'notv';
+  // console.log(arr);
+  // }else{
+  // console.log(arr);}
+  
+  
+  //});
+
+
+/* 
+
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://api.github.com/users/mdshahrouq");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("postman-token", "7facea02-5ad0-f749-6ea3-7501b3df8c7d");
+
+xhr.send(data);
+
+
+
+
+
+
+data.login
+data.url
+data.created_at
+data.company
+
+
+{
+  "login": "MDShahrouq",
+  "id": 6829801,
+  "avatar_url": "https://avatars2.githubusercontent.com/u/6829801?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/MDShahrouq",
+  "html_url": "https://github.com/MDShahrouq",
+  "followers_url": "https://api.github.com/users/MDShahrouq/followers",
+  "following_url": "https://api.github.com/users/MDShahrouq/following{/other_user}",
+  "gists_url": "https://api.github.com/users/MDShahrouq/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/MDShahrouq/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/MDShahrouq/subscriptions",
+  "organizations_url": "https://api.github.com/users/MDShahrouq/orgs",
+  "repos_url": "https://api.github.com/users/MDShahrouq/repos",
+  "events_url": "https://api.github.com/users/MDShahrouq/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/MDShahrouq/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "MD Shahrouq",
+  "company": "Bitjini",
+  "blog": "https://www.linkedin.com/in/mdshahrouq",
+  "location": null,
+  "email": null,
+  "hireable": true,
+  "bio": "Github store only my Source , not Destiny",
+  "public_repos": 113,
+  "public_gists": 3,
+  "followers": 16,
+  "following": 162,
+  "created_at": "2014-03-02T08:13:50Z",
+  "updated_at": "2018-02-02T04:12:45Z"
+}
+
+
+
+
+ */
+
+</script>
+
+</body>
+</html>
+
+
+
